@@ -28,6 +28,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
+
         <!-- Confirm Password -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
@@ -37,6 +38,15 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <!-- Timezone Select -->
+        <div class="mt-4">
+            <x-input-label for="timezone" :value="__('Timezone')"/>
+            <x-select-input id="timezone" class="block mt-1 w-full" name="timezone" :options="$timezones"
+                            :selected="old('timezone')"
+                            required/>
+            <x-input-error :messages="$errors->get('timezone')" class="mt-2"/>
         </div>
 
         <div class="flex items-center justify-end mt-4">
