@@ -26,7 +26,10 @@ class BookingController extends Controller
 
     public function store(StoreBookingRequest $request): RedirectResponse
     {
-        $request->user()->bookings()->create($request->validated());
+        $request->user()->bookings()->create([
+            'start' => fromUserDateTime($request->validated('start')),
+         'end' => fromUserDateTime($request->validated('end')),
+       ]);
 
         return redirect()->route('booking.index');
     }
@@ -42,7 +45,10 @@ class BookingController extends Controller
     {
         abort_unless($booking->user_id === $request->user()->id, 404);
 
-        $booking->update($request->validated());
+        $booking->update([
+            'start' => fromUserDateTime($request->validated('start')),
+            'end' => fromUserDateTime($request->validated('end')),
+        ]);
 
         return redirect()->route('booking.index');
     }
