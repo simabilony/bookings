@@ -18,4 +18,10 @@ class Booking extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scheduledNotifications(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(ScheduledNotification::class, 'notifiable');
+    }
+
 }
