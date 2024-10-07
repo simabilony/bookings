@@ -1,6 +1,7 @@
 <?php
 
 
+use Illuminate\Support\Facades\Facade;
 
 return [
 
@@ -14,7 +15,13 @@ return [
     | other UI elements where an application name needs to be displayed.
     |
     */
+    // ...
+    'aliases' => Facade::defaultAliases()->merge([
+        // 'Example' => App\Facades\Example::class,
+    ])->toArray(),
 
+    'notificationAttemptAmount' => 5 ,
+// ...
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
